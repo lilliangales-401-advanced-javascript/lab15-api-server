@@ -7,10 +7,40 @@ const router = express.Router();
 const auth = require('./middleware/auth.js');
 
 
+/**
+ * Get a list of categories
+ * @route GET /api/v1/categories
+ * @returns {object} 200 { count: 2, results: [ {}, {} ] }
+ * @returns {Error}  500 - Server error
+ */
 router.get('/api/v1/categories', auth, getCategories);
+/**
+ * Post for a given model
+ * @route POST /api/v1/categories
+ * @returns {object} 200 { result }
+ * @returns {Error}  500 - Server error
+ */
 router.post('/api/v1/categories', auth, postCategories);
+/**
+ * Get information for one given id
+ * @route GET /api/v1/categories/:id
+ * @returns {object} 200 { result }
+ * @returns {Error}  500 - Server error
+ */
 router.get('/api/v1/categories/:id', auth, getCategory);
+/**
+ * Put for a given id & model
+ * @route PUT /api/v1/categories/:id
+ * @returns {object} 200 { result }
+ * @returns {Error}  500 - Server error
+ */
 router.put('/api/v1/categories/:id', auth, putCategories);
+/**
+ * Delete for a given id & model
+ * @route DELETE /api/v1/categories/:id
+ * @returns {object} 200 { result }
+ * @returns {Error}  500 - Server error
+ */
 router.delete('/api/v1/categories/:id', auth, deleteCategories);
 
 
