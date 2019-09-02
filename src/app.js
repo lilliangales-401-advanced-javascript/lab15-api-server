@@ -22,6 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(authRoutes);
 app.use(categoryRoutes);
 
+app.use('/docs', express.static('./docs'));
+
 app.use(notFound);
 app.use(errorHandler);
 
