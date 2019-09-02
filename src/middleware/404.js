@@ -7,7 +7,7 @@
  */
 
 /**
- *
+ * This is a 404 error handler
  * @param err {object} (error object)
  * @param req {object} (request object)
  * @param res {object} (response object)

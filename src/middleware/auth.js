@@ -7,6 +7,19 @@ const User = require('../model/user.js');
 // -> parse user credentials
 // -> generateToken
 
+/**
+ *
+ * Authorization Middleware.
+ * @module src/middleware/auth
+ */
+
+/**
+ * This is the authorization middleware
+ * @param req {object} (request object)
+ * @param res {object} (response object)
+ * @param next
+ * @returns {Promise<T>}
+ */
 module.exports = (req, res, next) => {
   try {
     // let auth = req.headers.authorization;
