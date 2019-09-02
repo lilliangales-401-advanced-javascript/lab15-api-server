@@ -1,48 +1,26 @@
 'use strict';
 
-const cwd = process.cwd();
-
 const express = require('express');
-
-const modelFinder = require(`${cwd}/src/middleware/model-finder.js`);
-
 const router = express.Router();
 
-router.param('model', modelFinder.load);
-
-/**
- * Get a list of records for a given model
- * Model must be a proper model, located within the ../models folder
- * @route GET /posts
- * @returns {object} 200 { count: 2, results: [ {}, {} ] }
- * @returns {Error}  500 - Server error
- */
-
-router.get('/api/v1/categories', (request, response) => {
-  modelFinder.list()
-    .then(categories => response.status(200).json(categories));
-});
-
-router.get('/api/v1/categories/schema', (request, response) => {
-  response.status(200).json(request.model.jsonSchema());
-});
+// Middleware
+const auth = require('./middleware/auth.js');
 
 
-router.get('/api/v1/categories', handleGetAll);
-router.post('/api/v1/categories', handlePost);
-router.get('/api/v1/categories/:id', handleGetOne);
-router.put('/api/v1/categories/:id', handlePut);
-router.delete('/api/v1/categories/:id', handleDelete);
+router.get('/api/v1/categories', auth, getCategories);
+router.post('/api/v1/categories', auth, postCategories);
+router.get('/api/v1/categories/:id', auth, getCategory);
+router.put('/api/v1/categories/:id', auth, putCategories);
+router.delete('/api/v1/categories/:id', auth, deleteCategories);
 
-// Route Handlers
-/**
- *
- * @param request
- * @param response
- * @param next
- */
-function handleGetAll(request,response,next) {
-  request.model.get()
+
+// Models
+const Categories = require('./model/categories/categories-model');
+const categories = new Categories();
+
+function getCategories(request,response,next) {
+  // expects an array of object to be returned from the model
+  categories.get()
     .then( data => {
       const output = {
         count: data.length,
@@ -53,50 +31,33 @@ function handleGetAll(request,response,next) {
     .catch( next );
 }
 
-/**
- *
- * @param request
- * @param response
- * @param next
- */
-function handleGetOne(request,response,next) {
-  request.model.get(request.params.id)
+function getCategory(request,response,next) {
+  // expects an array with the one matching record from the model
+  categories.get(request.params.id)
     .then( result => response.status(200).json(result[0]) )
     .catch( next );
 }
 
-/**
- *
- * @param request
- * @param response
- * @param next
- */
-function handlePost(request,response,next) {
-  request.model.create(request.body)
+function postCategories(request,response,next) {
+  // expects the record that was just added to the database
+  categories.post(request.body)
     .then( result => response.status(200).json(result) )
     .catch( next );
 }
 
-/**
- *
- * @param request
- * @param response
- * @param next
- */
-function handlePut(request,response,next) {
-  request.model.update(request.params.id, request.body)
+
+function putCategories(request,response,next) {
+  // expects the record that was just updated in the database
+  categories.put(request.params.id, request.body)
     .then( result => response.status(200).json(result) )
     .catch( next );
 }
 
-/**
- *
- * @param request
- * @param response
- * @param next
- */
-function handleDelete(request,response,next) {
-  request.model.delete(request.params.id)
+// TODO: PATCH
+
+function deleteCategories(request,response,next) {
+  // Expects no return value (resource was deleted)
+  categories.delete(request.params.id)
     .then( result => response.status(200).json(result) )
     .catch( next );
 }

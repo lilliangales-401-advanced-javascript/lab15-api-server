@@ -3,13 +3,6 @@
 const Model = require('../mongo');
 const schema = require('./categories-schema.js');
 
-/**
- *
- * Categories model.
- * @module src/models/categories/categories-model
- */
-
-
 
 /**
  * @class
