@@ -10,7 +10,6 @@
 * [front-end](http://xyz.com) 
 
 #### Documentation
-* [api docs](http://xyz.com) (API servers)
 * [jsdoc](http://xyz.com) (Server assignments)
 
 
