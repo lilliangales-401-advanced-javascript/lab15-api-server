@@ -8,4 +8,4 @@ mongoose.connect(process.env.MONGODB_URI, {
   useCreateIndex: true,
 });
 
-app.start(3000);
+app.start(process.env.PORT);
