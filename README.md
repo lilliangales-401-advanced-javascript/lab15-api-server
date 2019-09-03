@@ -6,11 +6,11 @@
 
 ### Links and Resources
 * [submission PR](https://github.com/lilliangales-401-advanced-javascript/lab15-api-server/tree/route-authentication)
-* [travis](https://travis-ci.com/lilliangales-401-advanced-javascript/lab15-api-server)
-* [front-end](http://xyz.com) 
+* [travis](https://travis-ci.com/lilliangales-401-advanced-javascript/lab15-api-server/jobs/230917744)
+* [front-end](https://lab15-api-server.herokuapp.com/) 
 
 #### Documentation
-* [jsdoc](http://xyz.com) (Server assignments)
+* [jsdoc](https://lab15-api-server.herokuapp.com/docs) (Server assignments)
 
 
 ### Modules
