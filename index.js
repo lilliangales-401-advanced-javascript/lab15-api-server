@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const app = require('./src/app.js');
 
-mongoose.connect('mongodb://localhost:27017/db', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useCreateIndex: true,
 });
