@@ -28,8 +28,11 @@ module.exports = (req, res, next) => {
     switch (authType.toLowerCase()) {
     case 'basic':
       // check credentials
+      // eslint-disable-next-line
       let base64Buffer = Buffer.from(authString, 'base64'); // binary string
+      // eslint-disable-next-line
       let BufferString = base64Buffer.toString(); // username:password
+      // eslint-disable-next-line
       let [username, password] = BufferString.split(':');
       return User.authenticateBasic({ username, password })
         .then(user => {
