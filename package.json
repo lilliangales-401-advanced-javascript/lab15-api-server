@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose --coverage",
+    "test": "jest --verbose --coverage --detectOpenHandles",
     "lint": "eslint \"**/*.js\"",
     "jsdoc": "jsdoc -c ./docs/config/jsdoc.config.json",
     "startDB": "mkdir -p ./db && mongod --dbpath ./db",
