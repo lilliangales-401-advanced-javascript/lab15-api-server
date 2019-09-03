@@ -1,7 +1,8 @@
 language: node_js
 node_js:
-  - "9"
+  - "stable"
 
 script:
+  - npm install
   - npm run lint
   - npm test
