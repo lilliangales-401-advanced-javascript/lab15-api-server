@@ -5,7 +5,7 @@
 ### Author: Lillian Gales
 
 ### Links and Resources
-* [submission PR](http://xyz.com)
+* [submission PR](https://github.com/lilliangales-401-advanced-javascript/lab15-api-server/tree/route-authentication)
 * [travis](https://travis-ci.com/lilliangales-401-advanced-javascript/lab15-api-server)
 * [front-end](http://xyz.com) 
 
